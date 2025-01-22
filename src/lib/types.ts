@@ -11,3 +11,16 @@ export interface ChildFormData {
   isSpecialCare: boolean;
   weekIntervals: WeekInterval[];
 }
+
+export interface CalculationResult {
+  children: Array<{
+    ageGroup: string;
+    baseAllowance: number;
+    ageRelatedElement: number;
+    specialCareAmount: number;
+    totalAllowance: number;
+  }>;
+  weeklyTotal: number;
+  monthlyTotal: number;
+  yearlyTotal: number;
+}
