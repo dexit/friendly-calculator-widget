@@ -2,7 +2,13 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export const Calculator = () => {
   const [age, setAge] = useState<string>("");
@@ -47,16 +53,15 @@ export const Calculator = () => {
 
         <div className="space-y-2">
           <Label htmlFor="location">Location</Label>
-          <select
-            id="location"
-            className="w-full p-2 border rounded-md"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-          >
-            <option value="">Select location</option>
-            <option value="london">London</option>
-            <option value="outside_london">Outside London</option>
-          </select>
+          <Select value={location} onValueChange={setLocation}>
+            <SelectTrigger>
+              <SelectValue placeholder="Select location" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="london">London</SelectItem>
+              <SelectItem value="outside_london">Outside London</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
 
         <Button 
