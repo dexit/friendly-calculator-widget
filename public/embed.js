@@ -2,6 +2,7 @@
   function createContainer(id) {
     const container = document.createElement('div');
     container.id = id || 'f5-foster-calculator';
+    container.style.fontFamily = 'system-ui, -apple-system, sans-serif';
     return container;
   }
 
@@ -17,8 +18,8 @@
     const iframe = document.createElement('iframe');
     iframe.src = `${options.host || window.location.origin}/embed`;
     iframe.style.width = '100%';
-    iframe.style.height = '600px';
-    iframe.style.border = '1px solid #eee';
+    iframe.style.height = '700px';
+    iframe.style.border = '0';
     iframe.style.borderRadius = '8px';
     iframe.style.overflow = 'hidden';
     

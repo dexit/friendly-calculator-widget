@@ -10,8 +10,8 @@ export const siteConfig = {
     title: "Foster Care Allowance Calculator",
     description: "Calculate your potential foster care allowance",
     labels: {
-      age: "Child's Age Group",
-      careType: "Care Type"
+      age: "Child's Age",
+      location: "Location"
     },
     buttons: {
       calculate: {
@@ -22,7 +22,7 @@ export const siteConfig = {
     },
     results: {
       title: "Estimated Weekly Allowance",
-      backgroundColor: "bg-green-50"
+      backgroundColor: "bg-[#F7FAFC]"
     }
   },
   forms: {
@@ -56,6 +56,7 @@ export const siteConfig = {
     background: {
       primary: "#FFFFFF",
       secondary: "#F7FAFC"
-    }
+    },
+    border: "#E2E8F0"
   }
 };
