@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
   Select,
@@ -11,6 +10,7 @@ import {
 } from "@/components/ui/select";
 import { calculateAllowanceForChild } from "@/lib/calculator";
 import type { AgeGroup } from "@/lib/calculator";
+import { siteConfig } from "@/config/site";
 
 const Embed = () => {
   const [age, setAge] = useState<AgeGroup>("0-4");
@@ -22,15 +22,19 @@ const Embed = () => {
     setAllowance(result.totalAllowance);
   };
 
+  const config = siteConfig.calculator;
+
   return (
     <div className="w-full max-w-md mx-auto space-y-6 p-6 bg-white rounded-lg shadow-sm">
-      <h2 className="text-2xl font-bold text-center mb-6">Foster Care Allowance Calculator</h2>
+      <h2 className="text-2xl font-bold text-center mb-6 text-[#2D3748]">
+        {config.title}
+      </h2>
       
       <div className="space-y-4">
         <div className="space-y-2">
-          <Label htmlFor="age">Child's Age Group</Label>
+          <Label htmlFor="age" className="text-[#4A5568]">{config.labels.age}</Label>
           <Select value={age} onValueChange={(value) => setAge(value as AgeGroup)}>
-            <SelectTrigger>
+            <SelectTrigger className="border-[#00BCD4] focus:ring-[#00BCD4]">
               <SelectValue placeholder="Select age group" />
             </SelectTrigger>
             <SelectContent>
@@ -43,9 +47,12 @@ const Embed = () => {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="careType">Care Type</Label>
-          <Select value={isSpecialCare ? "special" : "standard"} onValueChange={(value) => setIsSpecialCare(value === "special")}>
-            <SelectTrigger>
+          <Label htmlFor="careType" className="text-[#4A5568]">{config.labels.careType}</Label>
+          <Select 
+            value={isSpecialCare ? "special" : "standard"} 
+            onValueChange={(value) => setIsSpecialCare(value === "special")}
+          >
+            <SelectTrigger className="border-[#00BCD4] focus:ring-[#00BCD4]">
               <SelectValue placeholder="Select care type" />
             </SelectTrigger>
             <SelectContent>
@@ -56,16 +63,16 @@ const Embed = () => {
         </div>
 
         <Button 
-          className="w-full"
+          className={`w-full ${config.buttons.calculate.color} ${config.buttons.calculate.hoverColor}`}
           onClick={calculateAllowance}
         >
-          Calculate Allowance
+          {config.buttons.calculate.text}
         </Button>
 
         {allowance !== null && (
-          <div className="mt-6 p-4 bg-green-50 rounded-md">
-            <p className="text-center text-lg font-semibold">
-              Estimated Weekly Allowance: £{allowance.toFixed(2)}
+          <div className={`mt-6 p-4 ${config.results.backgroundColor} rounded-md`}>
+            <p className="text-center text-lg font-semibold text-[#2D3748]">
+              {config.results.title}: £{allowance.toFixed(2)}
             </p>
           </div>
         )}
