@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { calculateTotalAllowance } from "@/lib/calculator";
-import { Plus } from "lucide-react";
+import { Plus, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { UserInfoForm, type UserInfoFormData } from "@/components/UserInfoForm";
 import { ChildForm } from "@/components/ChildForm";
@@ -10,8 +10,6 @@ import { Timeline } from "@/components/Timeline";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChildFormData } from "@/lib/types";
 import { siteConfig } from "@/config/site";
-import { Phone } from "lucide-react";
-import jsPDF from "jspdf";
 
 const Embed = () => {
   const [step, setStep] = useState<'info' | 'children' | 'results'>('info');
@@ -152,9 +150,13 @@ const Embed = () => {
     <div className="min-h-screen bg-background py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-2xl mx-auto space-y-8">
         <div className="text-center space-y-4">
-          <h1 className="text-4xl font-bold tracking-tight text-[#2D3748]">
-            {siteConfig.name}
-          </h1>
+          <div className="flex items-center justify-center space-x-2">
+            <img 
+              src="/lovable-uploads/9bf264e2-ce69-4acc-aed2-099c855002c2.png" 
+              alt={siteConfig.name} 
+              className="h-16"
+            />
+          </div>
           <p className="text-xl text-[#4A5568]">{siteConfig.tagline}</p>
           
           <div className="flex items-center justify-center space-x-2 text-[#00BCD4]">
@@ -204,7 +206,7 @@ const Embed = () => {
                   type="button"
                   variant="outline"
                   onClick={handleAddChild}
-                  className="w-full"
+                  className="w-full border-[#00BCD4] text-[#00BCD4] hover:bg-[#00BCD4] hover:text-white"
                 >
                   <Plus className="h-4 w-4 mr-2" />
                   Add Another Child
@@ -214,13 +216,13 @@ const Embed = () => {
                   <Button
                     onClick={() => setStep('info')}
                     variant="outline"
-                    className="flex-1"
+                    className="flex-1 border-[#00BCD4] text-[#00BCD4] hover:bg-[#00BCD4] hover:text-white"
                   >
                     Previous
                   </Button>
                   <Button
                     onClick={handleCalculate}
-                    className="flex-1"
+                    className="flex-1 bg-[#00BCD4] hover:bg-[#00ACC1] text-white"
                     disabled={isLoading}
                   >
                     Calculate
@@ -244,13 +246,13 @@ const Embed = () => {
                 <Button
                   onClick={() => setStep('children')}
                   variant="outline"
-                  className="flex-1"
+                  className="flex-1 border-[#00BCD4] text-[#00BCD4] hover:bg-[#00BCD4] hover:text-white"
                 >
                   Previous
                 </Button>
                 <Button
                   onClick={handleDownloadPDF}
-                  className="flex-1"
+                  className="flex-1 bg-[#00BCD4] hover:bg-[#00ACC1] text-white"
                 >
                   Download PDF
                 </Button>

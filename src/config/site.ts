@@ -46,8 +46,8 @@ export const siteConfig = {
     }
   },
   colors: {
-    primary: "#00BCD4",
-    secondary: "#FFA726",
+    primary: "#00BCD4", // Light blue from logo
+    secondary: "#FFA726", // Orange from logo
     text: {
       primary: "#2D3748",
       secondary: "#4A5568",
@@ -57,6 +57,11 @@ export const siteConfig = {
       primary: "#FFFFFF",
       secondary: "#F7FAFC"
     },
-    border: "#E2E8F0"
+    border: "#E2E8F0",
+    logo: {
+      blue: "#00BCD4",
+      orange: "#FFA726",
+      gray: "#718096"
+    }
   }
 };
