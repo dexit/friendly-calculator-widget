@@ -10,6 +10,7 @@ import { Timeline } from "@/components/Timeline";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChildFormData } from "@/lib/types";
 import { siteConfig } from "@/config/site";
+import jsPDF from "jspdf";
 
 const Embed = () => {
   const [step, setStep] = useState<'info' | 'children' | 'results'>('info');
@@ -273,3 +274,4 @@ const Embed = () => {
 };
 
 export default Embed;
+
