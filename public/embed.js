@@ -18,10 +18,11 @@
     const iframe = document.createElement('iframe');
     iframe.src = `${options.host || window.location.origin}/embed`;
     iframe.style.width = '100%';
-    iframe.style.height = '700px';
+    iframe.style.height = '800px';
     iframe.style.border = '0';
     iframe.style.borderRadius = '8px';
     iframe.style.overflow = 'hidden';
+    iframe.style.backgroundColor = 'transparent';
     
     container.appendChild(iframe);
   }
